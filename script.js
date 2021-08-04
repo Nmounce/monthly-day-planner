@@ -2,12 +2,22 @@
 //set moment to a variable
 var now = moment();
 //create a variable for the current date
-var currentDate = now.format("MM DD YYYY");
+var currentDate = now.format('MMMM Do YYYY hh:mm:ss a');
+var currentHour = now.format('H');
+console.log(currentHour);
+
+// display date and time inside the element
+document.getElementById("currentDay").textContent = currentDate;
 
 //create calendar grid
-const container = $(".container");
-const times = ["6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM", "8 PM"];
+var container = $(".container");
+var times = ["7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM"];
+let string = "7 , 8 , 9 , 10 , 11 , 12 , 13, 14, 15, 16, 17, 18, 19";
+parseInt(string);
+console.log(string);
 
+
+//create timeblocks
 function timeBlocks() {
     for (let i = 0; i < times.length; i++) {
         const row = $("<div>");
@@ -29,6 +39,17 @@ function timeBlocks() {
 }
 timeBlocks();
 
+//color coding for time
+for (let i = 0; i < string.length; i++) {
+    const textarea = $("<textarea>");
+    if (string < currentHour) {
+        $(textarea).addClass(".past");
+    } else if (string > currentHour) {
+        $(textarea).addClass(".future");
+    }else {
+        $(textarea).addClass(".present");
+    }
+};
 //--onclick event to save user input to local storage---//
 $(".saveBtn").on("click", function() {
     var hour = $(this).attr("id");
@@ -38,18 +59,80 @@ $(".saveBtn").on("click", function() {
     console.log(hour, textInput);
 });
 
+// var str = string;
+// function print24(str)
+// {
+//     // Get hours
+//     var h1 = Number(str[1] - '0');
+//     var h2 = Number(str[0] - '0');
+//     var hh = (h2 * 10 + h1 % 10);
+  
+//     // If time is in "AM"
+//     if (str[8] == 'A')
+//     {
+//         if (hh == 12)
+//         {
+//             document.write("00");
+//             for (var i = 2; i <= 7; i++)
+//                 document.write(str[i]);
+//         }
+//         else
+//         {
+//             for (var i = 0; i <= 7; i++)
+//                 document.write(str[i]);
+//         }
+//     }
+  
+//     // If time is in "PM"
+//     else
+//     {
+//         if (hh == 12)
+//         {
+//             document.write("12");
+//             for (var i = 2; i <= 7; i++)
+//                 document.write(str[i]);
+//         }
+//         else
+//         {
+//             hh = hh + 12;
+//             document.write(hh);
+//             for (var i = 2; i <= 7; i++)
+//                 document.write(str[i]);
+//         }
+//     }
+// }
+
+
 //color change function
 
-console.log(
-now.hour())
-for (let i = 0; i < times.length; i++) {
-    var timeSlot = times[i].split(" ")[0]
-    console.log(timeSlot)
-    if (timeSlot < now.hour()) {
-        $(`#${times[i]}`).prev().addClass("past")
-    } else if (timeSlot > now.hour()) {
-        $(`#${times[i]}`).prev().addClass("future")
-    }else {
-        $(`#${times[i]}`).prev().addClass("present")
-    }
-};
+// console.log(
+// now.hour())
+
+// function currentHour(format) {
+//     var time = moment().format(format);
+//     $("#current-date")
+// }
+// function formatAMPM(date) {
+//     var hours = date.getHours();
+//     var ampm = hours >= 12 ? 'pm' : 'am';
+//     hours = hours % 12;
+//     hours = hours ? hours : 12; // the hour '0' should be '12'
+//     var strTime = hours + ' ' + ampm;
+//     return strTime;
+//   }
+  
+//   console.log(formatAMPM(new Date));
+
+// var string = times;
+
+// console.log(d);
+
+// const unitTime = Date.parse(currentDate);
+// console.log(unitTime);
+// let text = '{ "times" : [' +
+// '{ "time":"6" , "ap":"AM" },' +
+// '{ "time":"7" , "ap":"AM" },' +
+// '{ "time":"8" , "ap":"AM" } ]}';
+// const obj = JSON.parse(text);
+// console.log(obj);
+  
