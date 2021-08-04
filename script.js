@@ -12,10 +12,12 @@ document.getElementById("currentDay").textContent = currentDate;
 //create calendar grid
 var container = $(".container");
 var times = ["7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM"];
-let string = "7 , 8 , 9 , 10 , 11 , 12 , 13, 14, 15, 16, 17, 18, 19";
-parseInt(string);
-console.log(string);
+let string = ["7" , "8" , "9" , "10" , "11" , "12" , "1" , "2" , "3" , "4" , "5" , "6" , "7"];
+// Number.parseInt(string);
 
+var timeArray = string.split(",")
+
+console.log(timeArray);
 
 //create timeblocks
 function timeBlocks() {
@@ -42,6 +44,7 @@ timeBlocks();
 //color coding for time
 for (let i = 0; i < string.length; i++) {
     const textarea = $("<textarea>");
+    console.log(string, currentHour);
     if (string < currentHour) {
         $(textarea).addClass(".past");
     } else if (string > currentHour) {
