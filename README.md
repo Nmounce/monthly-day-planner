@@ -1,7 +1,12 @@
 # Day-Planner
 
 ## Description
-Day Planner is a simple application that allows the user to input detailed hourly "to-do" items or reminders in a single-day calendar.
+Day Planner is a simple application that allows the user to input detailed hourly "to-do" items or reminders in a single-day calendar and save the item to local storage.
+
+Live application deployed at: https://nmounce.github.io/monthly-day-planner/
+
+The following image demonstrates the applications functionality:
+image.PNG
 
 ## Table of Contents
 General Info
@@ -53,6 +58,12 @@ Improvement to be done 2: Re-style using BootStrap.
 
 ## Acknowledgements
 Shout out to the TA's for the UC Davis Bootcamp for Software Development. Without them, I would still be re-writing my code.
+
+## Sources
+https://medium.com/@aleks.roslyakov/using-css-grid-jquery-making-a-daily-scheduler-pt-ii-7af7d239a55d
+https://stackoverflow.com/questions/62271505/how-can-i-set-different-colors-for-time-blocks-in-a-calendar-or-day-planner-usin
+https://github.com/astrobeef/05-day-planner
+
 
 ## Contact
 Nikki Mounce 

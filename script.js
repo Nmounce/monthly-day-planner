@@ -11,13 +11,13 @@ document.getElementById("currentDay").textContent = currentDate;
 
 //create calendar grid
 var container = $(".container");
-var times = ["7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM"];
-let string = ["7" , "8" , "9" , "10" , "11" , "12" , "1" , "2" , "3" , "4" , "5" , "6" , "7"];
+var times = [" 7 AM ", " 8 AM ", " 9 AM ", "10 AM", "11 AM", "12 PM", " 1 PM ", " 2 PM ", " 3 PM ", " 4 PM ", " 5 PM ", " 6 PM ", " 7 PM "];
+let string = ["07" , "08" , "09" , "10" , "11" , "12" , "13" , "14" , "15" , "16" , "17" , "18" , "19"];
 // Number.parseInt(string);
 
-var timeArray = string.split(",")
+// var timeArray = string.split(",")
 
-console.log(timeArray);
+// console.log(timeArray);
 
 //create timeblocks
 function timeBlocks() {
@@ -28,7 +28,7 @@ function timeBlocks() {
         const save = $("<button>");
         row.addClass("row");
         time.text(times[i]).addClass("time-block", "col-1");
-        textarea.addClass("col-10");
+        textarea.addClass("col-10").data("time", string[i]);
         save.text("SAVE").addClass("saveBtn", "col-1").attr("id", times[i]);
         container.append(row);
         row.append(time, textarea, save);
@@ -42,15 +42,15 @@ function timeBlocks() {
 timeBlocks();
 
 //color coding for time
-for (let i = 0; i < string.length; i++) {
-    const textarea = $("<textarea>");
-    console.log(string, currentHour);
-    if (string < currentHour) {
-        $(textarea).addClass(".past");
-    } else if (string > currentHour) {
-        $(textarea).addClass(".future");
+const buttons = $("button")
+for (let i = 0; i < buttons.length; i++) {
+    // var id= $(buttons[i]).attr("id").split(" ")[0]
+    if (string[i] < currentHour) {
+        $(buttons[i]).prev().addClass("past");
+    } else if (string[i] > currentHour) {
+        $(buttons[i]).prev().addClass("future");
     }else {
-        $(textarea).addClass(".present");
+        $(buttons[i]).prev().addClass("present");
     }
 };
 //--onclick event to save user input to local storage---//
